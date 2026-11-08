@@ -1,0 +1,193 @@
+import type { AiConfiguration } from "@/features/ai-configuration/types";
+
+export const AI_CONFIGURATION_SAMPLE_NOTICE =
+  "This AI configuration is sample data kept in this browser session. It does not store API keys, contact a provider, or enforce clinical safety. Refreshing the page restores the original sample configuration.";
+
+/**
+ * Fixed demo usage snapshot. These figures are not read from a provider or a billing system.
+ * The clock matches the AI monitoring sample.
+ */
+export const aiUsageSample = {
+  asOfLabel: "Nov 5, 2026",
+  tokensToday: 18420,
+  tokensThisMonth: 412880,
+  requestsToday: 96,
+};
+
+export const sampleAiConfiguration: AiConfiguration = {
+  providers: [
+    {
+      id: "provider-openai",
+      name: "OpenAI",
+      identifier: "openai",
+      description:
+        "Sample configuration for summary and note drafting. This record does not store an API key and does not contact OpenAI.",
+      providerType: "Language model",
+      defaultModelId: "model-gpt-41",
+      status: "Active",
+      createdAt: "2025-04-08",
+      updatedAt: "2026-08-19",
+    },
+    {
+      id: "provider-anthropic",
+      name: "Anthropic",
+      identifier: "anthropic",
+      description:
+        "Sample configuration for rounds presentation and clinical considerations. This record does not store an API key and does not contact Anthropic.",
+      providerType: "Language model",
+      defaultModelId: "model-claude-sonnet",
+      status: "Active",
+      createdAt: "2025-05-02",
+      updatedAt: "2026-08-19",
+    },
+    {
+      id: "provider-google",
+      name: "Google AI",
+      identifier: "google-ai",
+      description:
+        "Sample configuration kept paused so administrators can see a disabled provider. This record does not store an API key and does not contact Google.",
+      providerType: "Language model",
+      defaultModelId: "model-gemini-pro",
+      status: "Inactive",
+      createdAt: "2025-07-11",
+      updatedAt: "2026-09-30",
+    },
+  ],
+  models: [
+    {
+      id: "model-gpt-41",
+      providerId: "provider-openai",
+      name: "GPT-4.1",
+      description: "Sample model for longer clinical drafts, presentations, and evidence answers.",
+      capabilities: ["Summarization", "Presentation", "Clinical drafting", "Evidence retrieval"],
+      status: "Active",
+      createdAt: "2025-04-08",
+      updatedAt: "2026-08-19",
+    },
+    {
+      id: "model-gpt-41-mini",
+      providerId: "provider-openai",
+      name: "GPT-4.1 mini",
+      description: "Sample model kept inactive so a disabled model cannot be assigned to a task.",
+      capabilities: ["Summarization", "Prioritization"],
+      status: "Inactive",
+      createdAt: "2025-04-08",
+      updatedAt: "2026-08-19",
+    },
+    {
+      id: "model-claude-sonnet",
+      providerId: "provider-anthropic",
+      name: "Claude Sonnet 4.5",
+      description: "Sample model for presentation, note drafting, and clinical reasoning.",
+      capabilities: ["Presentation", "Clinical drafting", "Clinical reasoning", "Evidence retrieval"],
+      status: "Active",
+      createdAt: "2025-05-02",
+      updatedAt: "2026-08-19",
+    },
+    {
+      id: "model-claude-haiku",
+      providerId: "provider-anthropic",
+      name: "Claude Haiku 4.5",
+      description: "Sample model for shorter summaries and prioritization.",
+      capabilities: ["Summarization", "Prioritization"],
+      status: "Active",
+      createdAt: "2025-05-02",
+      updatedAt: "2026-08-19",
+    },
+    {
+      id: "model-gemini-pro",
+      providerId: "provider-google",
+      name: "Gemini 2.5 Pro",
+      description:
+        "Sample model for summaries, clinical reasoning, and evidence answers. Tasks can select it only while Google AI is enabled.",
+      capabilities: ["Summarization", "Clinical reasoning", "Evidence retrieval"],
+      status: "Active",
+      createdAt: "2025-07-11",
+      updatedAt: "2026-09-30",
+    },
+  ],
+  tasks: [
+    {
+      id: "patient-summary",
+      name: "Patient Summary",
+      description: "Draft a structured sample summary of the current patient record for clinician review.",
+      providerId: "provider-openai",
+      modelId: "model-gpt-41",
+      fallbackModelId: "model-claude-haiku",
+      status: "Active",
+      maxOutputTokens: 2048,
+      updatedAt: "2026-08-19",
+    },
+    {
+      id: "patient-prioritization",
+      name: "Patient Prioritization",
+      description: "Rank the sample patient list for rounds using the configured model.",
+      providerId: "provider-anthropic",
+      modelId: "model-claude-haiku",
+      fallbackModelId: null,
+      status: "Active",
+      maxOutputTokens: 1024,
+      updatedAt: "2026-08-19",
+    },
+    {
+      id: "rounds-presentation",
+      name: "Rounds Presentation",
+      description: "Prepare a sample rounds presentation from the selected patient context.",
+      providerId: "provider-anthropic",
+      modelId: "model-claude-sonnet",
+      fallbackModelId: "model-gpt-41",
+      status: "Active",
+      maxOutputTokens: 3072,
+      updatedAt: "2026-08-19",
+    },
+    {
+      id: "clinical-note-drafting",
+      name: "Clinical Note Drafting",
+      description: "Draft a sample clinical note that still requires clinician review.",
+      providerId: "provider-openai",
+      modelId: "model-gpt-41",
+      fallbackModelId: "model-claude-sonnet",
+      status: "Active",
+      maxOutputTokens: 4096,
+      updatedAt: "2026-08-19",
+    },
+    {
+      id: "clinical-considerations",
+      name: "Clinical Considerations",
+      description: "List sample clinical considerations with the configured reasoning model.",
+      providerId: "provider-anthropic",
+      modelId: "model-claude-sonnet",
+      fallbackModelId: null,
+      status: "Active",
+      maxOutputTokens: 2048,
+      updatedAt: "2026-08-19",
+    },
+    {
+      id: "evidence-qa",
+      name: "Evidence & Clinical Q&A",
+      description: "Answer a sample clinical question with supporting evidence references.",
+      providerId: "provider-openai",
+      modelId: "model-gpt-41",
+      fallbackModelId: "model-claude-sonnet",
+      status: "Inactive",
+      maxOutputTokens: 2048,
+      updatedAt: "2026-09-30",
+    },
+  ],
+  safety: {
+    requireClinicianReview: true,
+    preventSignedNoteTreatment: true,
+    displayAiIndicators: true,
+    requireSupportingEvidence: true,
+    enableFallbackWhenUnavailable: true,
+    updatedAt: "2026-09-02",
+  },
+  usageLimits: {
+    maxTokensPerRequest: 8192,
+    dailyUsageThreshold: 250000,
+    monthlyUsageThreshold: 5000000,
+    warningThresholdPercent: 80,
+    usageAlertsEnabled: true,
+    updatedAt: "2026-09-02",
+  },
+};

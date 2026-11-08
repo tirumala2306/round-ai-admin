@@ -1,0 +1,146 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-brand: var(--brand);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #f3f5f7;
+  --foreground: #15252f;
+  --card: #ffffff;
+  --card-foreground: #15252f;
+  --popover: #ffffff;
+  --popover-foreground: #15252f;
+  --primary: #1c3946;
+  --primary-foreground: #ffffff;
+  --secondary: #e8eeef;
+  --secondary-foreground: #15252f;
+  --muted: #e7ebee;
+  --muted-foreground: #5e717a;
+  --accent: #e5f4f5;
+  --accent-foreground: #15252f;
+  --destructive: #b42318;
+  --border: #e1e6ea;
+  --input: #d5dde2;
+  --ring: #88d3da;
+  --brand: #88d3da;
+  --success: #1f7a4d;
+  --warning: #b7791f;
+  --chart-1: #15252f;
+  --chart-2: #1c3946;
+  --chart-3: #88d3da;
+  --chart-4: #8aa0a8;
+  --chart-5: #e6eef0;
+  --radius: 0.5rem;
+  --sidebar: #15252f;
+  --sidebar-foreground: #f7f9fa;
+  --sidebar-primary: #88d3da;
+  --sidebar-primary-foreground: #15252f;
+  --sidebar-accent: #1c3946;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgb(255 255 255 / 12%);
+  --sidebar-ring: #88d3da;
+  color-scheme: light;
+}
+
+.dark {
+  --background: #101a21;
+  --foreground: #f3f5f7;
+  --card: #15252f;
+  --card-foreground: #f3f5f7;
+  --popover: #15252f;
+  --popover-foreground: #f3f5f7;
+  --primary: #88d3da;
+  --primary-foreground: #15252f;
+  --secondary: #1c3946;
+  --secondary-foreground: #f3f5f7;
+  --muted: #1c3946;
+  --muted-foreground: #b7c6ce;
+  --accent: #1c3946;
+  --accent-foreground: #f3f5f7;
+  --destructive: #f0a8a2;
+  --border: rgb(255 255 255 / 12%);
+  --input: rgb(255 255 255 / 14%);
+  --ring: #88d3da;
+  --brand: #88d3da;
+  --success: #7dcea0;
+  --warning: #e3b56a;
+  --chart-1: #f3f5f7;
+  --chart-2: #88d3da;
+  --chart-3: #1c3946;
+  --chart-4: #8aa0a8;
+  --chart-5: #15252f;
+  --sidebar: #15252f;
+  --sidebar-foreground: #f7f9fa;
+  --sidebar-primary: #88d3da;
+  --sidebar-primary-foreground: #15252f;
+  --sidebar-accent: #1c3946;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgb(255 255 255 / 12%);
+  --sidebar-ring: #88d3da;
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    text-rendering: optimizeLegibility;
+  }
+  html {
+    @apply font-sans;
+  }
+  input[type="checkbox"],
+  input[type="radio"] {
+    accent-color: var(--primary);
+  }
+}
